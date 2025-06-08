@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using Application.Middleware;
 using CrossCutting;
 

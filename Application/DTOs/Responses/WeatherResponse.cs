@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Application.DTOs.Responses
+﻿namespace Application.DTOs.Responses
 {
     public class WeatherResponse
     {

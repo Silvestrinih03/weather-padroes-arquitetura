@@ -22,11 +22,11 @@ namespace Application.Services
             _adapters = adapters;
         }
 
-        public async Task SaveWeatherToLocalDatabase(List<WeatherRequest> weatherRequests)
+        public async Task FetchAndSaveWeatherToLocalDatabase(List<WeatherRequest> weatherRequests)
         {
             foreach (var request in weatherRequests)
             {
-                Weather? weather = null;
+                Weather weather;
 
                 foreach (var adapter in _adapters)
                 {
@@ -36,7 +36,7 @@ namespace Application.Services
 
                         if (weather is null)
                             continue;
-                        
+
                         try
                         {
                             await _weatherRepository.AddOrUpdateWeatherReportAsync(weather);

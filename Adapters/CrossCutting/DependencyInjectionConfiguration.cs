@@ -43,8 +43,6 @@ namespace CrossCutting
             services.AddHttpClient<IWeatherProviderAdapter, OpenWeatherAdapter>();
             services.AddHttpClient<IWeatherProviderAdapter, WeatherBitAdapter>();
 
-            services.AddScoped<WeatherSyncService>();
-
             return services;
         }
     }

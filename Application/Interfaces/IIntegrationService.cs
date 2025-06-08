@@ -4,6 +4,6 @@ namespace Application.Interfaces
 {
     public interface IIntegrationService : IDisposable
     {
-        Task SaveWeatherToLocalDatabase(List<WeatherRequest> weatherRequest);
+        Task FetchAndSaveWeatherToLocalDatabase(List<WeatherRequest> weatherRequest);
     }
 }

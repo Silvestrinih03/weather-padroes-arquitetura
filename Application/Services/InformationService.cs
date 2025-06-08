@@ -17,9 +17,9 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task<List<WeatherResponse>> GetWeather()
+        public async Task<List<WeatherResponse>> GetAllWeather()
         {
-            var weatherResponse = await _weatherService.GetWeatherFromABC();
+            var weatherResponse = await _weatherService.GetAllWeather();
 
             List<WeatherResponse> weatherList = new List<WeatherResponse>();
 
@@ -39,6 +39,27 @@ namespace Application.Services
             }
 
             return weatherList;
+        }
+
+        public Task<List<WeatherResponse>> GetAllWeatherFromProvider(string provider)
+        {
+            return _weatherService.GetAllWeatherFromProvider(provider);
+        }
+
+        public Task<List<WeatherResponse>> GetWeatherFromCity(string city, string state = null, string country = null)
+        {
+            return _weatherService.GetWeatherFromCity(city, state, country)
+                .ContinueWith(task => task.Result.Select(w => new WeatherResponse
+                {
+                    Id = w.Id,
+                    Provider = w.Provider,
+                    City = w.City,
+                    State = w.State,
+                    Country = w.Country,
+                    CelsiusTemperatureMin = w.CelsiusTemperatureMin,
+                    CelsiusTemperatureMax = w.CelsiusTemperatureMax,
+                    LastUpdate = w.LastUpdate
+                }).ToList());
         }
 
         public void Dispose()

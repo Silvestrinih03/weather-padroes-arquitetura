@@ -10,6 +10,8 @@ namespace Domain.Interfaces.Repositories
 
         Task<List<Weather>> GetWeatherReportsByLocation(string city, string state, string country);
 
+        Task<List<Weather>> GetWeatherReportByProvider(string provider);
+
         Task<Weather> GetWeatherReportByProviderAndLocation(string source, string city, string state, string country);
 
         Task AddWeatherReportAsync(Weather weather);

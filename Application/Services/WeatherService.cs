@@ -1,7 +1,6 @@
 using Application.DTOs.Responses;
 using Application.Interfaces;
 using Domain.Interfaces.Repositories;
-using Domain.Models;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Services
@@ -19,7 +18,7 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task<List<WeatherResponse>> GetWeatherFromABC()
+        public async Task<List<WeatherResponse>> GetAllWeather()
         {
             var weatherList = await _repository.GetAllWeatherReports();
 
@@ -34,6 +33,39 @@ namespace Application.Services
                 CelsiusTemperatureMax = w.CelsiusTemperatureMax,
                 LastUpdate = w.LastUpdate
             }).ToList();
+        }
+
+        public async Task<List<WeatherResponse>> GetAllWeatherFromProvider(string provider)
+        {
+            var weatherReports = await _repository.GetWeatherReportByProvider(provider);
+
+            return weatherReports.Select(w => new WeatherResponse
+            {
+                Id = w.Id,
+                Provider = w.Provider,
+                City = w.City,
+                State = w.State,
+                Country = w.Country,
+                CelsiusTemperatureMin = w.CelsiusTemperatureMin,
+                CelsiusTemperatureMax = w.CelsiusTemperatureMax,
+                LastUpdate = w.LastUpdate
+            }).ToList();
+        }
+
+        public Task<List<WeatherResponse>> GetWeatherFromCity(string city, string state, string country)
+        {
+            return _repository.GetWeatherReportsByLocation(city, state, country)
+                .ContinueWith(task => task.Result.Select(w => new WeatherResponse
+                {
+                    Id = w.Id,
+                    Provider = w.Provider,
+                    City = w.City,
+                    State = w.State,
+                    Country = w.Country,
+                    CelsiusTemperatureMin = w.CelsiusTemperatureMin,
+                    CelsiusTemperatureMax = w.CelsiusTemperatureMax,
+                    LastUpdate = w.LastUpdate
+                }).ToList());
         }
 
         public void Dispose()

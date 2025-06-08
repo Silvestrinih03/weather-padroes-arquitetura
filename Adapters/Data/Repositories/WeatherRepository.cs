@@ -19,9 +19,16 @@ namespace Data.Repositories
         public async Task<List<Weather>> GetWeatherReportsByLocation(string city, string state, string country)
             => await dataContext.Set<Weather>()
                                 .Where(w =>
-                                    w.City == city &&
-                                    w.State == state &&
-                                    w.Country == country)
+                                    w.City == city
+                                    && (string.IsNullOrEmpty(state) || w.State == state)
+                                    && (string.IsNullOrEmpty(country) || w.Country == country)
+                                )
+                                .ToListAsync();
+
+        public async Task<List<Weather>> GetWeatherReportByProvider(string provider)
+            => await dataContext.Set<Weather>()
+                                .Where(w =>
+                                    w.Provider == provider)
                                 .ToListAsync();
 
         public async Task<Weather> GetWeatherReportByProviderAndLocation(string provider, string city, string state, string country)
