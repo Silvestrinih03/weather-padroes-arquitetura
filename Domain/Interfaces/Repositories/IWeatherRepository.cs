@@ -16,6 +16,8 @@ namespace Domain.Interfaces.Repositories
 
         Task UpdateWeatherReportAsync(Weather weather);
 
+        Task AddOrUpdateWeatherReportAsync(Weather weather);
+
         Task SaveChangesAsync();
     }
 }

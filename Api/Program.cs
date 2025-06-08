@@ -1,3 +1,4 @@
+using Application.Interfaces;
 using Application.Middleware;
 using CrossCutting;
 
@@ -8,15 +9,10 @@ var webApplicationBuilder = WebApplication.CreateBuilder(args);
 var configuration = webApplicationBuilder.Configuration;
 
 webApplicationBuilder.Services.AddApiVersioning();
-
 webApplicationBuilder.Services.AddHealthChecks();
-
 webApplicationBuilder.Services.AddEndpointsApiExplorer();
-
 webApplicationBuilder.Services.RegisterDependencies(webApplicationBuilder.Configuration);
-
 webApplicationBuilder.Services.AddSwaggerGenNewtonsoftSupport();
-
 webApplicationBuilder.Services.AddLocalization();
 
 var webApplication = webApplicationBuilder.Build();
@@ -24,6 +20,7 @@ var webApplication = webApplicationBuilder.Build();
 var logger = webApplication.Services.GetRequiredService<ILogger<Program>>();
 
 logger.LogInformation("Connection String: {ConnectionString}", configuration.GetConnectionString("MySQLConnection"));
+logger.LogInformation("WeatherBit ApiKey: {ApiKey}", configuration["WeatherBit:ApiKey"]);
 
 if (webApplication.Environment.IsDevelopment())
 {
@@ -37,10 +34,6 @@ if (webApplication.Environment.IsDevelopment())
 }
 
 webApplication.UseHttpsRedirection();
-
-//webApplication.UseAuthentication();
-
-//webApplication.UseAuthorization();
 
 webApplication.UseMiddleware<ApiMiddleware>();
 

@@ -36,11 +36,6 @@ namespace Application.Services
             }).ToList();
         }
 
-        public async Task<List<WeatherResponse>> GetWeatherFromDFG()
-        {
-            return null;
-        }
-
         public void Dispose()
         {
             GC.SuppressFinalize(this);

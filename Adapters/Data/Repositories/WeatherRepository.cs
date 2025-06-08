@@ -43,6 +43,24 @@ namespace Data.Repositories
             return Task.CompletedTask;
         }
 
+        public async Task AddOrUpdateWeatherReportAsync(Weather weather)
+        {
+            var existing = await GetWeatherReportByProviderAndLocation(weather.Provider, weather.City, weather.State, weather.Country);
+
+            if (existing is null)
+            {
+                await AddWeatherReportAsync(weather);
+            }
+            else
+            {
+                existing.CelsiusTemperatureMin = weather.CelsiusTemperatureMin;
+                existing.CelsiusTemperatureMax = weather.CelsiusTemperatureMax;
+                existing.LastUpdate = weather.LastUpdate;
+
+                await UpdateWeatherReportAsync(existing);
+            }
+        }
+
         public async Task SaveChangesAsync()
             => await dataContext.SaveChangesAsync();
     }

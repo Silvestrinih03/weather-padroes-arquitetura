@@ -1,31 +1,26 @@
-﻿using Application.Interfaces;
-using Domain.Models;
+﻿using Domain.Models;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 
-public class OpenWeatherAdapter : IWeatherProviderAdapter
+public class OpenWeatherAdapter : BaseWeatherAdapter
 {
-    public string Name => "OpenWeatherMap";
-
-    private readonly HttpClient _http;
-    private readonly string _apiKey;
+    public override string Name => "OpenWeatherMap";
 
     public OpenWeatherAdapter(HttpClient http, IConfiguration config)
-    {
-        _http = http;
-        _apiKey = config["OpenWeather:ApiKey"];
-    }
+      : base(http, config, "OpenWeather:ApiKey")
+    { }
 
-    public async Task<Weather> GetCurrentAsync(string city, string state, string country)
+    protected override string BuildUrl(string city, string state, string country, string apiKey)
+        => $"https://api.openweathermap.org/data/2.5/weather" +
+           $"?q={Uri.EscapeDataString(city)},{Uri.EscapeDataString(country)}" +
+           $"&appid={apiKey}" +
+           $"&units=metric";
+
+    protected override Weather ParseWeather(JsonDocument doc, string city, string state, string country)
     {
-        var url = $"https://api.openweathermap.org/data/2.5/weather?q={city},{state},{country}&appid={_apiKey}&units=metric";
-        var json = await _http.GetStringAsync(url);
-        using var doc = JsonDocument.Parse(json);
         var main = doc.RootElement.GetProperty("main");
-
         return new Weather
         {
-            Provider = Name,
             City = city,
             State = state,
             Country = country,

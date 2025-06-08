@@ -41,6 +41,7 @@ namespace CrossCutting
         public static IServiceCollection AddWeatherIntegration(this IServiceCollection services)
         {
             services.AddHttpClient<IWeatherProviderAdapter, OpenWeatherAdapter>();
+            services.AddHttpClient<IWeatherProviderAdapter, WeatherBitAdapter>();
 
             services.AddScoped<WeatherSyncService>();
 
