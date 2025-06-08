@@ -1,4 +1,5 @@
 using Application.DTOs.Responses;
+using Domain.Models;
 
 namespace Application.Interfaces
 {

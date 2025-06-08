@@ -38,9 +38,9 @@ if (webApplication.Environment.IsDevelopment())
 
 webApplication.UseHttpsRedirection();
 
-webApplication.UseAuthentication();
+//webApplication.UseAuthentication();
 
-webApplication.UseAuthorization();
+//webApplication.UseAuthorization();
 
 webApplication.UseMiddleware<ApiMiddleware>();
 

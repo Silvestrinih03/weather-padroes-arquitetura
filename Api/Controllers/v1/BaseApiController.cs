@@ -9,7 +9,6 @@ namespace Api.Controllers.v1
     [ApiVersion("1.0")]
     [ApiController]
     [Produces("application/json")]
-    [Authorize]
     public class BaseApiController : ControllerBase
     {
         protected BaseApiController()
