@@ -1,3 +1,4 @@
+using Application.Interfaces;
 using CrossCutting.Api;
 using CrossCutting.Application;
 using CrossCutting.Data;
@@ -22,6 +23,8 @@ namespace CrossCutting
                 ApplicationExtensions.RegisterApplication(services);
 
                 ApiExtensions.RegisterApi(services, configuration);
+
+                services.AddWeatherIntegration();
             }
             catch (Exception ex)
             {
@@ -33,6 +36,15 @@ namespace CrossCutting
 
                 throw;
             }
+        }
+
+        public static IServiceCollection AddWeatherIntegration(this IServiceCollection services)
+        {
+            services.AddHttpClient<IWeatherProviderAdapter, OpenWeatherAdapter>();
+
+            services.AddScoped<WeatherSyncService>();
+
+            return services;
         }
     }
 }

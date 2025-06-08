@@ -4,7 +4,7 @@
     {
         public long Id { get; set; }
 
-        public string Source { get; set; }
+        public string Provider { get; set; }
 
         public string City { get; set; }
 

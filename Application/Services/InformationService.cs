@@ -28,7 +28,13 @@ namespace Application.Services
                 weatherList.Add(new WeatherResponse
                 {
                     Id = weather.Id,
-                    Name = weather.Name
+                    Provider = weather.Provider,
+                    City = weather.City,
+                    State = weather.State,
+                    Country = weather.Country,
+                    CelsiusTemperatureMin = weather.CelsiusTemperatureMin,
+                    CelsiusTemperatureMax = weather.CelsiusTemperatureMax,
+                    LastUpdate = weather.LastUpdate
                 });
             }
 

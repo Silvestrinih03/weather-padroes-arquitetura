@@ -18,6 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Api\NewFile1.txt" />
 		<None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
 	</ItemGroup>
 </Project>
