@@ -1,0 +1,7 @@
+<map id="Api.Controllers.v1.WeatherInformationController" name="Api.Controllers.v1.WeatherInformationController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,256,206,405"/>
+<area shape="rect" id="Node000002" href="$class_api_1_1_controllers_1_1v1_1_1_base_api_controller.html" title=" " alt="" coords="22,123,190,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,223,108,256,103,256,103,223"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="58,5,154,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,89,108,123,103,123,103,89"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Application.Interfaces.IWeatherProviderAdapter" name="Application.Interfaces.IWeatherProviderAdapter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="72,5,265,91"/>
+<area shape="rect" id="Node000002" href="$class_base_weather_adapter.html" title=" " alt="" coords="91,139,246,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,106,171,139,166,139,166,106"/>
+<area shape="rect" id="Node000003" href="$class_open_weather_adapter.html" title=" " alt="" coords="5,320,161,432"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="131,286,113,321,109,319,127,284"/>
+<area shape="rect" id="Node000004" href="$class_weather_bit_adapter.html" title=" " alt="" coords="185,320,326,432"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="211,284,230,319,225,321,207,286"/>
+</map>
