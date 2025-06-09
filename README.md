@@ -23,6 +23,14 @@ Este projeto foi construído com base nos **princípios SOLID** e na **Clean Arc
 ## ⚙️ Como Funciona
 O sistema oferece uma API RESTful para consulta de dados climáticos, que pode ser acessada e testada diretamente pelo Swagger (UI gerada automaticamente ao rodar o projeto). O usuário pode escolher o provedor de dados meteorológicos (OpenWeatherMap ou WeatherBit), e o sistema retorna as informações de forma unificada e padronizada.
 
+## 📊 Documentação de Código (Diagramas)
+Para facilitar a compreensão da estrutura interna do projeto, utilizamos Doxygen com suporte do Graphviz para gerar documentação técnica e diagramas interativos.
+Os arquivos estão disponíveis na pasta html na raiz do projeto.
+### Como acessar:
+- Navegue até a pasta html.
+- Abra o arquivo index.html com um navegador.
+- Você terá acesso a uma visualização completa da estrutura do projeto, incluindo diagramas de classes, relações e dependências.
+
 ## 🔐 Requisitos
 Para executar o projeto, é necessário obter **chaves de API** gratuitas dos seguintes serviços:
 - [OpenWeatherMap](https://openweathermap.org/api)
